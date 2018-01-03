@@ -12,19 +12,18 @@ import com.savand.model.Doctor;
 @SpringBootTest
 public class DoctorServiceImplTest {
 
-	@Autowired
-	DoctorService service;
-	
-	
-	@Test
-	public void testGetDoctorById() {
-		Doctor doctorById = service.getDoctorById(100007);
-		System.out.println(doctorById);
-	}
+  @Autowired
+  DoctorService service;
 
-	@Test
-	public void testGetDoctorList() {
-		System.out.println(service.getDoctorList());
-	}
+  @Test
+  public void testGetDoctorById() {
+    Doctor doctorById = service.getDoctorById(100007);
+    System.out.println(doctorById);
+  }
+
+  @Test
+  public void testGetDoctorList() {
+    System.out.println(service.getDoctorList());
+  }
 
 }

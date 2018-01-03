@@ -6,8 +6,8 @@ import com.savand.model.Person;
 
 public interface PersonService {
 
-	List<Person> getPersonList();
-	
-	Person getPersonById(int id);
-	
+  List<Person> getPersonList();
+
+  Person getPersonById(int id);
+
 }

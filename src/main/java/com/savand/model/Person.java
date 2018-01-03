@@ -1,6 +1,5 @@
 package com.savand.model;
 
-
 import java.time.LocalDate;
 
 import javax.persistence.Column;
@@ -15,21 +14,20 @@ import lombok.Data;
 
 @Entity
 @Table(name = "persons")
-public @Data class Person extends BaseEntity{
-	
-	@Column(name = "full_name", nullable = false)
-	@NotNull
-	private String fullName;
-	
-	@Column(name = "birthdate", nullable = false)
-	@NotNull
-	@Convert(converter = LocalDateAttributeConverter.class)
-	private LocalDate birthDate;
+public @Data class Person extends BaseEntity {
 
-	@Override
-	public String toString() {
-		return "Person [fullName=" + fullName + ", birthDate=" + birthDate + "]";
-	}
-	
-	
+  @Column(name = "full_name", nullable = false)
+  @NotNull
+  private String fullName;
+
+  @Column(name = "birthdate", nullable = false)
+  @NotNull
+  @Convert(converter = LocalDateAttributeConverter.class)
+  private LocalDate birthDate;
+
+  @Override
+  public String toString() {
+    return "Person [fullName=" + fullName + ", birthDate=" + birthDate + "]";
+  }
+
 }

@@ -9,18 +9,18 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SicknessServiceImplTest {
-	
-	@Autowired
-	private SicknessService service;
-	
-	@Test
-	public void testGetSicknessList() {
-		System.out.println(service.getSicknessById(100009));
-	}
 
-	@Test
-	public void testGetSicknessById() {
-		System.out.println(service.getSicknessList());
-	}
+  @Autowired
+  private SicknessService service;
+
+  @Test
+  public void testGetSicknessList() {
+    System.out.println(service.getSicknessById(100009));
+  }
+
+  @Test
+  public void testGetSicknessById() {
+    System.out.println(service.getSicknessList());
+  }
 
 }

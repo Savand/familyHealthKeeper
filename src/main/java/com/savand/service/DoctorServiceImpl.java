@@ -9,19 +9,19 @@ import com.savand.model.Doctor;
 import com.savand.repository.DoctorRepository;
 
 @Service
-public class DoctorServiceImpl implements DoctorService{
+public class DoctorServiceImpl implements DoctorService {
 
-	@Autowired
-	private DoctorRepository repository;
-	
-	@Override
-	public Doctor getDoctorById(int id) {
-		return repository.findOne(id);
-	}
+  @Autowired
+  private DoctorRepository repository;
 
-	@Override
-	public List<Doctor> getDoctorList() {
-		return repository.findAll();
-	}
+  @Override
+  public Doctor getDoctorById(int id) {
+    return repository.findOne(id);
+  }
+
+  @Override
+  public List<Doctor> getDoctorList() {
+    return repository.findAll();
+  }
 
 }

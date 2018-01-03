@@ -9,19 +9,19 @@ import com.savand.model.Person;
 import com.savand.repository.PersonRepository;
 
 @Service
-public class PersonServiceImpl implements PersonService{
-	
-	@Autowired
-	private PersonRepository repository;
+public class PersonServiceImpl implements PersonService {
 
-	@Override
-	public List<Person> getPersonList() {
-		return repository.findAll();
-	}
+  @Autowired
+  private PersonRepository repository;
 
-	@Override
-	public Person getPersonById(int id) {
-		return repository.findOne(id);
-	}
-	
+  @Override
+  public List<Person> getPersonList() {
+    return repository.findAll();
+  }
+
+  @Override
+  public Person getPersonById(int id) {
+    return repository.findOne(id);
+  }
+
 }

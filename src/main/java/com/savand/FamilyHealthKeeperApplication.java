@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class FamilyHealthKeeperApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(FamilyHealthKeeperApplication.class, args);
-	}
+  public static void main(String[] args) {
+    SpringApplication.run(FamilyHealthKeeperApplication.class, args);
+  }
 }

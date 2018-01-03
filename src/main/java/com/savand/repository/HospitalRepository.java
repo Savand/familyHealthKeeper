@@ -4,6 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 import com.savand.model.Hospital;
 
-public interface HospitalRepository extends JpaRepository<Hospital, Integer>{
+public interface HospitalRepository extends JpaRepository<Hospital, Integer> {
 
 }

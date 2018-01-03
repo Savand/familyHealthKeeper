@@ -16,32 +16,30 @@ import com.savand.util.LocalDateAttributeConverter;
 import lombok.Data;
 
 @Entity
-@Table (name = "sickness_history")
-public @Data class Sickness  extends BaseEntity{
-	
-	@Column(name = "start_date", nullable = false)
-	@NotNull
-	@Convert(converter = LocalDateAttributeConverter.class)
-	private LocalDate startDate;
-	
-	@Column(name = "end_date", nullable = false)
-	@NotNull
-	@Convert(converter = LocalDateAttributeConverter.class)
-	private LocalDate endDate;
-	
-	@Column(name = "description", nullable = false)
-	@NotNull
-	private String description;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "person_id")
-	private Person person;
+@Table(name = "sickness_history")
+public @Data class Sickness extends BaseEntity {
 
-	
-	@Override
-	public String toString() {
-		return "Sickness [startDate=" + startDate + ", endDate=" + endDate + ", description=" + description + "]";
-	}
+  @Column(name = "start_date", nullable = false)
+  @NotNull
+  @Convert(converter = LocalDateAttributeConverter.class)
+  private LocalDate startDate;
 
-	
+  @Column(name = "end_date", nullable = false)
+  @NotNull
+  @Convert(converter = LocalDateAttributeConverter.class)
+  private LocalDate endDate;
+
+  @Column(name = "description", nullable = false)
+  @NotNull
+  private String description;
+
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "person_id")
+  private Person person;
+
+  @Override
+  public String toString() {
+    return "Sickness [startDate=" + startDate + ", endDate=" + endDate + ", description=" + description + "]";
+  }
+
 }

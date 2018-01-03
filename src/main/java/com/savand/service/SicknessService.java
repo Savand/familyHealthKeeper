@@ -4,10 +4,9 @@ import java.util.List;
 
 import com.savand.model.Sickness;
 
+public interface SicknessService {
 
-public interface SicknessService{
-	
-	List<Sickness> getSicknessList();
-	
-	Sickness getSicknessById(int id);
+  List<Sickness> getSicknessList();
+
+  Sickness getSicknessById(int id);
 }

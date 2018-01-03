@@ -13,19 +13,19 @@ import com.savand.model.Person;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PersonServiceImplTest {
-	
-	@Autowired
-	private PersonService service;
-	
-	@Test
-	public void testGetPersonList() {
-		List<Person> personList = service.getPersonList();
-		System.out.println(personList);
-	}
 
-	@Test
-	public void testGetPersonById() {
-		System.out.println(service.getPersonById(100_000));
-	}
+  @Autowired
+  private PersonService service;
+
+  @Test
+  public void testGetPersonList() {
+    List<Person> personList = service.getPersonList();
+    System.out.println(personList);
+  }
+
+  @Test
+  public void testGetPersonById() {
+    System.out.println(service.getPersonById(100_000));
+  }
 
 }

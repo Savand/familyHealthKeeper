@@ -9,19 +9,19 @@ import com.savand.model.Hospital;
 import com.savand.repository.HospitalRepository;
 
 @Service
-public class HospitalServiceImpl implements HospitalService{
+public class HospitalServiceImpl implements HospitalService {
 
-	@Autowired
-	private HospitalRepository repository;
-	
-	@Override
-	public List<Hospital> getHospitalList() {
-		return repository.findAll();
-	}
+  @Autowired
+  private HospitalRepository repository;
 
-	@Override
-	public Hospital getHospitalById(int id) {
-		return repository.findOne(id);
-	}
+  @Override
+  public List<Hospital> getHospitalList() {
+    return repository.findAll();
+  }
+
+  @Override
+  public Hospital getHospitalById(int id) {
+    return repository.findOne(id);
+  }
 
 }
