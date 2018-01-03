@@ -21,6 +21,6 @@ INSERT INTO doctors(full_name, contacts, specialization, hospital_id) VALUES
     ('Павлюк П.С.', 'уточнити', 'дитячий ЛОР', 100004);
     
 INSERT INTO sickness_history(start_date, end_date, description, person_id) VALUES
-    ('11-15-2017', '12-05-2017', 'Пневмонія, Саркоїдоз', 100002),
-    ('12-18-2017', '12-25-2017', 'ГРВІ', 100000);
+    ('2017-11-15', '2017-12-05', 'Пневмонія, Саркоїдоз', 100002),
+    ('2017-12-18', '2017-12-25', 'ГРВІ', 100000);
     
