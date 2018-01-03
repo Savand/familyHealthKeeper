@@ -1,3 +1,4 @@
+DELETE FROM visits;
 DELETE FROM sickness_history;
 DELETE FROM persons;
 DELETE FROM doctors;
@@ -27,4 +28,8 @@ INSERT INTO doctors(full_name, contacts, specialization, hospital_id) VALUES
 INSERT INTO sickness_history(start_date, end_date, description, person_id) VALUES
     ('2017-11-15', '2017-12-05', 'Пневмонія, Саркоїдоз', 100002),
     ('2017-12-18', '2017-12-25', 'ГРВІ', 100000);
+INSERT INTO visits(visit_date, next_visit_date, conclusion, doctor_id, sickness_id) VALUES 
+	('2017-11-20', '2017-11-25', 'Пневмонія', 100010, 100013),
+	('2017-12-20', '2017-12-28', 'ГРВІ', 100008, 100014),
+	('2017-11-23', '2017-12-08', 'Пневмонія, саркоїдоз', 100012, 100013);
     

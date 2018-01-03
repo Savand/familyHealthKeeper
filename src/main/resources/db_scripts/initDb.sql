@@ -30,11 +30,12 @@ CREATE TABLE sickness_history
 
 CREATE TABLE hospitals
 (
-    id              INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-    full_name       text NOT NULL,
-    address         text NOT NULL,
-    web_site_url    text NOT NULL,
-    rate            INTEGER
+    id                     INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+    full_name              text NOT NULL,
+    address                text NOT NULL,
+    web_site_url           text NOT NULL,
+    rate                   INTEGER,
+    private_institution    boolean
 );
 
 CREATE TABLE doctors
@@ -51,7 +52,7 @@ CREATE TABLE visits
 (
     id              INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
     visit_date      date NOT NULL,
-    next_visit_date date NOT NULL,
+    next_visit_date date,
     conclusion      text NOT NULL,
     file_url        text,
     doctor_id       INTEGER NOT NULL,
