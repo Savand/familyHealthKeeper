@@ -14,9 +14,9 @@ import lombok.Data;
 @Table(name = "recipes")
 public @Data class Recipe extends BaseEntity{
 	
-  @Column(name = "medecine")
+  @Column(name = "medicine")
   @NotNull
-	private String medecine;
+	private String medicine;
 	
   @Column(name = "cost")
 	private Integer cost;
@@ -27,7 +27,7 @@ public @Data class Recipe extends BaseEntity{
   
   @Override
   public String toString() {
-    return "Recipe [medecine=" + medecine + ", cost=" + cost + "]";
+    return "Recipe [medicine=" + medicine + ", cost=" + cost + "]";
   }
   
   

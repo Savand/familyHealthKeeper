@@ -1,3 +1,4 @@
+DELETE FROM measurements;
 DELETE FROM recipes;
 DELETE FROM visits;
 DELETE FROM sickness_history;
@@ -33,8 +34,12 @@ INSERT INTO visits(visit_date, next_visit_date, conclusion, doctor_id, sickness_
 	('2017-11-20', '2017-11-25', 'Пневмонія', 100010, 100013),
 	('2017-12-20', '2017-12-28', 'ГРВІ', 100008, 100014),
 	('2017-11-23', '2017-12-08', 'Пневмонія, саркоїдоз', 100012, 100013);
-INSERT INTO recipes(medecine, cost, visit_id) VALUES 
+INSERT INTO recipes(medicine, cost, visit_id) VALUES 
 	('Медрол', 80000, 100017),
 	('Нольпаза', 25000, 100017),
     ('Орасепт', 16000, 100016),
 	('Назол', 5000, 100016);
+INSERT INTO measurements(measure_datetime, indicator_value, measurement_type, person_id) VALUES
+	('2017-11-20 12:55:37', '36.6', 'TEMPERATURE_C', 100000),
+	('2017-11-20 00:00:00', '98.3', 'TEMOERATURE_F', 100001),
+	('2017-11-20 00:00:00', '80/100', 'BLOOD_PREASSURE_MMHG', 100002);

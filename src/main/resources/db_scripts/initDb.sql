@@ -64,20 +64,19 @@ CREATE TABLE visits
 
 CREATE TABLE measurements
 (
-    id              INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-    measure_date    TIMESTAMP NOT NULL,
-    indicator_value real NOT NULL,
-    uom             text NOT NULL,
-    type            text,
-    sickness_id     INTEGER NOT NULL, 
-    FOREIGN KEY (sickness_id) REFERENCES sickness_history (id)
+    id               INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
+    measure_datetime TIMESTAMP NOT NULL,
+    indicator_value  text NOT NULL,
+    measurement_type text NOT NULL,
+    person_id        INTEGER NOT NULL, 
+    FOREIGN KEY (person_id) REFERENCES persons (id)
 );
 
 CREATE TABLE recipes
 (
     id              INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
-    medecine        text NOT NULL,
+    medicine        text NOT NULL,
     cost            INTEGER NOT NULL,
     visit_id        INTEGER NOT NULL,
     FOREIGN KEY (visit_id) REFERENCES visits (id)
-)
+);
