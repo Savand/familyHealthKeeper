@@ -6,7 +6,7 @@ import com.savand.model.Person;
 
 public interface PersonService {
 
-  List<Person> getPersonList();
+  List<Person> getPersonListOrderByIdAsc();
 
   Person getPersonById(int id);
 

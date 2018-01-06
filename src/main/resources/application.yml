@@ -8,3 +8,8 @@ spring:
   data:
     rest:
       basePath: /api
+      
+  mvc:
+    view:
+      prefix: /WEB-INF/view/jsp/
+      suffix: .jsp

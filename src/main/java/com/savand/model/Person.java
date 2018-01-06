@@ -1,10 +1,12 @@
 package com.savand.model;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -24,6 +26,9 @@ public @Data class Person extends BaseEntity {
   @NotNull
   @Convert(converter = LocalDateAttributeConverter.class)
   private LocalDate birthDate;
+  
+  @OneToMany(mappedBy = "person")
+  private List<Measurement> measurementList;
 
   @Override
   public String toString() {

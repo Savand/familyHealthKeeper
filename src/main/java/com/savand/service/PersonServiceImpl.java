@@ -15,13 +15,14 @@ public class PersonServiceImpl implements PersonService {
   private PersonRepository repository;
 
   @Override
-  public List<Person> getPersonList() {
-    return repository.findAll();
+  public List<Person> getPersonListOrderByIdAsc() {
+    return repository.findAllByOrderByBirthDateAsc();
   }
 
   @Override
   public Person getPersonById(int id) {
     return repository.findOne(id);
   }
+
 
 }

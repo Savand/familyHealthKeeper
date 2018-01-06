@@ -19,7 +19,7 @@ public class PersonServiceImplTest {
 
   @Test
   public void testGetPersonList() {
-    List<Person> personList = service.getPersonList();
+    List<Person> personList = service.getPersonListOrderByIdAsc();
     System.out.println(personList);
   }
 
