@@ -40,7 +40,18 @@ public @Data class Measurement extends BaseEntity{
   private Person person;
     
   public enum MeasurementType{
-    TEMPERATURE_C, TEMOERATURE_F, BLOOD_PREASSURE_MMHG;
+    TEMPERATURE_C("Temperature, C&deg;"), TEMPERATURE_F("tostring Temp2"), BLOOD_PRESSURE_MMHG("tostring Pressure");
+    
+    private final String fieldDescription;
+
+    private MeasurementType(String value) {
+        fieldDescription = value;
+    }
+    
+    @Override
+    public String toString() {
+        return fieldDescription;
+    }
   }
 
   @Override

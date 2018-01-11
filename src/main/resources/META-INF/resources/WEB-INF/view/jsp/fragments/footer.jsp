@@ -8,7 +8,7 @@
               <br>Lviv, Ukraine</p>
           </div>
           <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Around the Web</h4>
+            <h4 class="text-uppercase mb-4">Author's socials</h4>
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
                 <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.facebook.com/Savand86">
@@ -24,7 +24,7 @@
           </div>
           <div class="col-md-4">
             <h4 class="text-uppercase mb-4">About FamilyHealthKeeper</h4>
-            <p class="lead mb-0">FamilyHealthKeeper is a free to use application.</p>
+            <p class="lead mb-0">FamilyHealthKeeper is a free application that allows you to keep track about the health of your family members.</p>
           </div>
         </div>
       </div>
