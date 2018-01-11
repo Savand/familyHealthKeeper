@@ -59,6 +59,8 @@
 
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
+    
+    <script src="js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
 
   </body>
 

@@ -1,3 +1,7 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<c:set var="appRootPath" value='<%= request.getScheme() + "://" + request.getServerName() + ":" + 
+request.getServerPort() + request.getContextPath() %>'/>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -20,6 +24,7 @@
 
     <!-- Plugin CSS -->
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+    <link href="/js/datetimepicker-master/build/jquery.datetimepicker.min.css" rel="stylesheet"> 
 
     <!-- Custom styles for this template -->
     <link href="css/freelancer.min.css" rel="stylesheet">
