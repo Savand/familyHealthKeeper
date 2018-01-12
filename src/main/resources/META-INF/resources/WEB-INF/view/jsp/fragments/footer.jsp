@@ -1,14 +1,17 @@
     <!-- Footer -->
-    <footer class="footer text-center">
+    <footer id="contact" class="footer text-center">
       <div class="container">
         <div class="row">
           <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Location</h4>
-            <p class="lead mb-0">79016 Kniaz Sviatoslav sq.
-              <br>Lviv, Ukraine</p>
+            <h4 class="text-uppercase mb-4">Contact</h4>
+            <p class="lead mb-0">
+              <img src="img/portfolio/house.png" alt="address."> 79016 Kniaz Sviatoslav sq., 5, 236
+              <br>Lviv, Ukraine
+              <br><br><a href="tel:+380933883255"><img src="img/portfolio/telephone.png" alt="tel."></a> +38(093)388-32-55
+              <br><br><a href="mailto:savka.and@gmail.com"><img src="img/portfolio/mail.png" alt="mail"></a> savka.and@gmail.com</p>
           </div>
           <div class="col-md-4 mb-5 mb-lg-0">
-            <h4 class="text-uppercase mb-4">Author's socials</h4>
+            <h4 class="text-uppercase mb-4">web contact</h4>
             <ul class="list-inline mb-0">
               <li class="list-inline-item">
                 <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.facebook.com/Savand86">
@@ -23,8 +26,9 @@
             </ul>
           </div>
           <div class="col-md-4">
-            <h4 class="text-uppercase mb-4">About FamilyHealthKeeper</h4>
-            <p class="lead mb-0">FamilyHealthKeeper is a free application that allows you to keep track about the health of your family members.</p>
+            <h4 class="text-uppercase mb-4">From author</h4>
+            <p class="lead mb-0">This app was created to simplify the assembling of the info about our family's health. 
+           For the app were used Java and Java related technologies (Spring), Bootstrap, JQuery etc. Enjoy it</p>
           </div>
         </div>
       </div>
@@ -55,12 +59,9 @@
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
-    <script src="js/contact_me.js"></script>
 
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
-    
-    <script src="js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
 
   </body>
 

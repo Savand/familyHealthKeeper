@@ -41,8 +41,7 @@ Person measurements
 								</div>
 							</div>
 							<div class="form-group row">
-								<label for="measurementType" class="col-sm-2 col-form-label">Measurement
-									type</label>
+								<label for="measurementType" class="col-sm-2 col-form-label">Type</label>
 								<div class="col-sm-10">
 									<select class="form-control" id="measurementType">
 										<option value="TEMPERATURE_C">Temperature, C&deg;</option>
@@ -51,11 +50,23 @@ Person measurements
 									</select>
 								</div>
 							</div>
-							<div class="form-group row">
-								<label for=indicatorValue class="col-sm-2 col-form-label">Value</label>
+							<div id="tempeatureSection" class="form-group row">
+								<label for="indicatorValue" class="col-sm-2 col-form-label">Value</label>
 								<div class="col-sm-10">
 									<input type="number" id="indicatorValue" min="34" max="43" step="0.1" value="36.6">
 								</div>
+							</div>
+							<div id="pressureSection" class="form-group row">
+								<label for="diaPressure" class="col-sm-2 col-form-label">DIA</label>
+								<div class="col-sm-10">
+									<input id="diaPressure" type="number" class="form-control" value="80"/>
+								</div>
+								
+								<label for="sysPressure" class="col-sm-2 col-form-label">SYS</label>
+								<div class="col-sm-10">
+									<input id="sysPressure" type="number" class="form-control"  value="120"/>
+								</div>
+
 							</div>
 
 						</form>
@@ -127,13 +138,36 @@ Person measurements
 	   $('#datetimepicker').val(new Date().toLocaleString());
 	   $('#datetimepicker').datetimepicker();
 	   
+	   $("#tempeatureSection").show();
+	   $("#pressureSection").hide();
+	   
+	   $('select').on('change', function() {
+		   if (this.value === "BLOOD_PRESSURE_MMHG"){
+			   $("#tempeatureSection").hide();
+			   $("#pressureSection").show();
+		   } else {
+			   $("#tempeatureSection").show();
+			   $("#pressureSection").hide();
+		   }
+		   
+	   })
 	   
 	   function readData() {
+		   var measurementType = $('#measurementType').val();
+		   var indicatorValue = $('#indicatorValue').val();
+		   if(measurementType === 'BLOOD_PRESSURE_MMHG'){
+			   var sysPressure = $('#sysPressure').val();
+			   var diaPressure = $('#diaPressure').val();
+			   indicatorValue = diaPressure + "/" + sysPressure; 
+		   }
+		   
+		   
+		   
 		   var measurementJson = {
 				   person : $('#person').val(),
 				   measureDateTime: new Date($('#datetimepicker').val()),
 				   measurementType: $('#measurementType').val(),
-				   indicatorValue: $('#indicatorValue').val()
+				   indicatorValue: indicatorValue
 			   };
 		  return strMeasurement = JSON.stringify(measurementJson, null, 4);
 	   }

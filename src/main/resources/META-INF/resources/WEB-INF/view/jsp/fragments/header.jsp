@@ -28,6 +28,8 @@ request.getServerPort() + request.getContextPath() %>'/>
 
     <!-- Custom styles for this template -->
     <link href="css/freelancer.min.css" rel="stylesheet">
+    
+    <link rel="shortcut icon" type="image/png" href="img/portfolio/favicon.ico"/>
 
   </head>
 
