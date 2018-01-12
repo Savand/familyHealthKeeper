@@ -41,5 +41,5 @@ INSERT INTO recipes(medicine, cost, visit_id) VALUES
 	('Назол', 5000, 100016);
 INSERT INTO measurements(measure_datetime, indicator_value, measurement_type, person_id) VALUES
 	('2017-11-20 12:55:37', '36.6', 'TEMPERATURE_C', 100000),
-	('2017-11-20 00:00:00', '98.3', 'TEMOERATURE_F', 100001),
-	('2017-11-20 00:00:00', '80/100', 'BLOOD_PREASSURE_MMHG', 100002);
+	('2017-11-20 00:00:00', '98.3', 'TEMPERATURE_F', 100001),
+	('2017-11-20 00:00:00', '80/100', 'BLOOD_PRESSURE_MMHG', 100002);

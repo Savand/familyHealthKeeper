@@ -32,7 +32,7 @@ Person measurements
 						<form id="addMeasurementForm">
 							<c:set var="personUri"
 								value="${ appRootPath }/api/persons/${ person.id }" />
-							<input id="person" type="text" name="person" value="${personUri}"
+							<input id="person" type="text" name="person" value="${ personUri }"
 								hidden="true">
 							<div class="form-group row">
 								<label for="datetimepicker" class="col-sm-2 col-form-label">Date</label>
@@ -46,7 +46,7 @@ Person measurements
 								<div class="col-sm-10">
 									<select class="form-control" id="measurementType">
 										<option value="TEMPERATURE_C">Temperature, C&deg;</option>
-										<option value="TEMOERATURE_F">Temperature, F&deg;</option>
+										<option value="TEMPERATURE_F">Temperature, F&deg;</option>
 										<option value="BLOOD_PRESSURE_MMHG">Blood pressure, mmHg</option>
 									</select>
 								</div>
@@ -54,7 +54,7 @@ Person measurements
 							<div class="form-group row">
 								<label for=indicatorValue class="col-sm-2 col-form-label">Value</label>
 								<div class="col-sm-10">
-									<input id="indicatorValue" type="number" class="form-control" />
+									<input type="number" id="indicatorValue" min="34" max="43" step="0.1" value="36.6">
 								</div>
 							</div>
 
@@ -87,9 +87,9 @@ Person measurements
 							<fmt:parseDate value="${ measurement.measureDateTime }"
 								pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
 							<td><fmt:formatDate pattern="HH:mm dd MMM, yy"
-									value="${parsedDateTime}" /></td>
-							<td>${measurement.measurementType}</td>
-							<td>${measurement.indicatorValue}</td>
+									value="${ parsedDateTime }" /></td>
+							<td>${ measurement.measurementType.fieldDescription }</td>
+							<td>${ measurement.indicatorValue }</td>
 
 							<td><button oncLick="deleteMeasurement(${measurement.id})"
 									type="button" class="btn btn-danger">Delete</button></td>
@@ -105,7 +105,7 @@ Person measurements
 
 <%@ include file="fragments/footer.jsp"%>
 <script>
-
+	
 	function deleteMeasurement(id){
 
 	    $.ajax({
@@ -124,7 +124,7 @@ Person measurements
 	}
 	
    $(function(){
-	   $.datetimepicker.setLocale('en');
+	   $('#datetimepicker').val(new Date().toLocaleString());
 	   $('#datetimepicker').datetimepicker();
 	   
 	   

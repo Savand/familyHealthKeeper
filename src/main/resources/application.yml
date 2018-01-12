@@ -4,8 +4,7 @@ spring:
   datasource:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/familyHealthKeeper
-    username: postgres
-    password: postgres
+    username: savand
   data:
     rest:
       basePath: /api
