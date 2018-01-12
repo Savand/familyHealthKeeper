@@ -64,8 +64,9 @@
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
     
-    <!-- Datetime picker -->
-    <script src="js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
+    <!-- JS plugin -->
+    <script src="pluginLib/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
+    <script src="pluginLib/DataTables/datatables.min.js"></script>
 
   </body>
 

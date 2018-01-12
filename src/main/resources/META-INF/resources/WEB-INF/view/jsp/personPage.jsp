@@ -12,12 +12,13 @@ Person measurements
 <section>
 	<div class="jumbotron">
 
-		<button type="button" class="btn btn-success pull-right"
-			data-toggle="modal" data-target="#myModal" style="margin: 5px">Add
-			measurement</button>
+
 		<h3>
 			Measurements for <span class="label label-default">${ person.fullName }</span>
 		</h3>
+		<button type="button" class="btn btn-success pull-right"
+			data-toggle="modal" data-target="#myModal" style="margin: 5px">Add
+			measurement</button>
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
 			<div class="modal-dialog">
@@ -83,7 +84,7 @@ Person measurements
 		</div>
 
 		<div class="table-responsive">
-			<table class="table table-hover table-dark">
+			<table id="measurement-data-table" class="table table-hover">
 				<thead>
 					<tr>
 						<th>Date of measurement</th>
@@ -93,11 +94,12 @@ Person measurements
 					</tr>
 				</thead>
 				<tbody>
-					<c:forEach var="measurement" items="${person.measurementList}">
+
+					<c:forEach var="measurement" items="${person.measurementList}"><!-- TODO call ajax by person id ordered by date desc -->
 						<tr>
 							<fmt:parseDate value="${ measurement.measureDateTime }"
 								pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
-							<td><fmt:formatDate pattern="HH:mm dd MMM, yy"
+							<td><fmt:formatDate pattern="dd MMM yyyy, HH:mm "
 									value="${ parsedDateTime }" /></td>
 							<td>${ measurement.measurementType.fieldDescription }</td>
 							<td>${ measurement.indicatorValue }</td>
@@ -135,7 +137,11 @@ Person measurements
 	}
 	
    $(function(){
-	   $('#datetimepicker').val(new Date().toLocaleString());
+
+	   $('#measurement-data-table').DataTable();
+
+	   var now = new Date();
+	   $('#datetimepicker').val(now.toLocaleString());
 	   $('#datetimepicker').datetimepicker();
 	   
 	   $("#tempeatureSection").show();
@@ -161,15 +167,20 @@ Person measurements
 			   indicatorValue = diaPressure + "/" + sysPressure; 
 		   }
 		   
-		   
+		   function getDateWithZeroZone(){
+			   var date = new Date($('#datetimepicker').val());
+			   date.setHours(date.getHours() - date.getTimezoneOffset() / 60)
+			   return date;
+		   }
 		   
 		   var measurementJson = {
 				   person : $('#person').val(),
-				   measureDateTime: new Date($('#datetimepicker').val()),
+				   measureDateTime: getDateWithZeroZone(),
 				   measurementType: $('#measurementType').val(),
 				   indicatorValue: indicatorValue
 			   };
-		  return strMeasurement = JSON.stringify(measurementJson, null, 4);
+		   
+		  return strMeasurement = JSON.stringify(measurementJson);
 	   }
 	   
        $('#addMeasurementDataBtn').on('click', function(e){

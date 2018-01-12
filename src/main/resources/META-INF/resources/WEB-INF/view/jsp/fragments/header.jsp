@@ -24,7 +24,8 @@ request.getServerPort() + request.getContextPath() %>'/>
 
     <!-- Plugin CSS -->
     <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
-    <link href="/js/datetimepicker-master/build/jquery.datetimepicker.min.css" rel="stylesheet"> 
+    <link href="pluginLib/datetimepicker-master/build/jquery.datetimepicker.min.css" rel="stylesheet"> 
+    <link href="pluginLib/DataTables/datatables.min.css" rel="stylesheet"> 
 
     <!-- Custom styles for this template -->
     <link href="css/freelancer.min.css" rel="stylesheet">
@@ -52,7 +53,7 @@ request.getServerPort() + request.getContextPath() %>'/>
               <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/#about">About</a>
             </li>
             <li class="nav-item mx-0 mx-lg-1">
-              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="/#contact">Contact</a>
+              <a class="nav-link py-3 px-0 px-lg-3 rounded js-scroll-trigger" href="#contact">Contact</a>
             </li>
           </ul>
         </div>
