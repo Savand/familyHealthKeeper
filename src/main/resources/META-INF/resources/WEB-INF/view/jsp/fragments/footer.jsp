@@ -59,9 +59,13 @@
 
     <!-- Contact Form JavaScript -->
     <script src="js/jqBootstrapValidation.js"></script>
+    
 
     <!-- Custom scripts for this template -->
     <script src="js/freelancer.min.js"></script>
+    
+    <!-- Datetime picker -->
+    <script src="js/datetimepicker-master/build/jquery.datetimepicker.full.min.js"></script>
 
   </body>
 
