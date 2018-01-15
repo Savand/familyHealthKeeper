@@ -12,12 +12,11 @@ Person measurements
 <section>
 	<div class="jumbotron">
 
-
 		<h3>
 			Measurements for <span class="label label-default">${ person.fullName }</span>
 		</h3>
 		<button type="button" class="btn btn-success"
-			data-toggle="modal" data-target="#myModal" style="margin: 5px">Add</button>
+			data-toggle="modal" data-target="#myModal" style="margin: 5px">Add record</button>
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
 			<div class="modal-dialog">
@@ -37,7 +36,7 @@ Person measurements
 							<div class="form-group row">
 								<label for="datetimepicker" class="col-sm-2 col-form-label">Date</label>
 								<div class="col-sm-10">
-									<input id="datetimepicker" type='text' class="form-control" />
+									<input id="datetimepicker" type='text' class="form-control" required/>
 								</div>
 							</div>
 							<div class="form-group row">
@@ -53,7 +52,7 @@ Person measurements
 							<div id="tempeatureSection" class="form-group row">
 								<label for="indicatorValue" class="col-sm-2 col-form-label">Value</label>
 								<div class="col-sm-10">
-									<input type="number" id="indicatorValue" min="34" max="43" step="0.1" value="36.6">
+									<input type="number" id="indicatorValue" min="34" max="43" step="0.1" value="36.6" class="form-control" required>
 								</div>
 							</div>
 							<div id="pressureSection" class="form-group row">
@@ -68,22 +67,22 @@ Person measurements
 								</div>
 
 							</div>
+						<div class="modal-footer">
+							<button type="submit" class="btn btn-primary">Add</button>
+							<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						</div>
 
 						</form>
 					</div>
 
-					<div class="modal-footer">
-						<button id="addMeasurementDataBtn" type="submit"
-							class="btn btn-primary">Add</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-					</div>
+
 				</div>
 
 			</div>
 		</div>
 
 		<div class="table-responsive">
-			<table id="measurement-data-table" class="display" cellspacing="0" width="100%">
+			<table id="measurement-data-table" class="display">
 				<thead>
 					<tr>
 						<th>Date of measurement</th>
@@ -94,7 +93,7 @@ Person measurements
 				</thead>
 				<tbody>
 
-					<c:forEach var="measurement" items="${person.measurementList}"><!-- TODO call ajax by person id ordered by date desc -->
+					<c:forEach var="measurement" items="${ person.measurementList }">
 						<tr>
 							<fmt:parseDate value="${ measurement.measureDateTime }"
 								pattern="yyyy-MM-dd'T'HH:mm" var="parsedDateTime" type="both" />
@@ -117,92 +116,9 @@ Person measurements
 
 <%@ include file="fragments/footer.jsp"%>
 <script>
-	
-	function deleteMeasurement(id){
-
-	    $.ajax({
-	        url: 'api/measurements/' + id,
-	        contentType: "application/json",
-	        dataType: 'json',
-	        type: 'DELETE',
-	        data: id,
-	        success: function(data){
-	    	   	window.location.href = 'personPage?id=${person.id}';  
-	        },
-	        error: function(data){
-	     	   	alert('Oops, smth went wrong');
-	        }
-	    });
-	}
-	
-   $(function(){
-
-	   $('#measurement-data-table').DataTable({
-		   "order": [[ 0, "desc" ]]
-	   });
-	   
-
-	   var now = new Date();
-	   $('#datetimepicker').val(now.toLocaleString());
-	   $('#datetimepicker').datetimepicker();
-	   
-	   $("#tempeatureSection").show();
-	   $("#pressureSection").hide();
-	   
-	   $('select').on('change', function() {
-		   if (this.value === "BLOOD_PRESSURE_MMHG"){
-			   $("#tempeatureSection").hide();
-			   $("#pressureSection").show();
-		   } else {
-			   $("#tempeatureSection").show();
-			   $("#pressureSection").hide();
-		   }
-		   
-	   })
-	   
-	   function readData() {
-		   var measurementType = $('#measurementType').val();
-		   var indicatorValue = $('#indicatorValue').val();
-		   if(measurementType === 'BLOOD_PRESSURE_MMHG'){
-			   var sysPressure = $('#sysPressure').val();
-			   var diaPressure = $('#diaPressure').val();
-			   indicatorValue = diaPressure + "/" + sysPressure; 
-		   }
-		   
-		   function getDateWithZeroZone(){
-			   var date = new Date($('#datetimepicker').val());
-			   date.setHours(date.getHours() - date.getTimezoneOffset() / 60)
-			   return date;
-		   }
-		   
-		   var measurementJson = {
-				   person : $('#person').val(),
-				   measureDateTime: getDateWithZeroZone(),
-				   measurementType: $('#measurementType').val(),
-				   indicatorValue: indicatorValue
-			   };
-		   
-		  return strMeasurement = JSON.stringify(measurementJson);
-	   }
-	   
-       $('#addMeasurementDataBtn').on('click', function(e){
-           e.preventDefault();
-           $.ajax({
-               url: 'api/measurements',
-               contentType: "application/json",
-               dataType: 'json',
-               type: 'POST',
-               data: readData(),
-               success: function(data){
-           	   	window.location.href = 'personPage?id=${person.id}';  
-               },
-               error: function(data){
-            	   	alert('Oops, smth went wrong');
-               }
-           });
-       });
-   });
-   
+ var personId = ${person.id};
 </script>
+<script src="js/personList.js"></script>
+
 
 

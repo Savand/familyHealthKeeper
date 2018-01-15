@@ -11,12 +11,12 @@ import javax.validation.constraints.NotNull;
 import lombok.Data;
 
 @Entity
-@Table(name = "recipes")
-public @Data class Recipe extends BaseEntity{
+@Table(name = "drugs")
+public @Data class Drug extends BaseEntity{
 	
   @Column(name = "medicine")
   @NotNull
-	private String medicine;
+	private String name;
 	
   @Column(name = "cost")
 	private Integer cost;
@@ -27,7 +27,7 @@ public @Data class Recipe extends BaseEntity{
   
   @Override
   public String toString() {
-    return "Recipe [medicine=" + medicine + ", cost=" + cost + "]";
+    return "Drug [name=" + name + ", cost=" + cost + "]";
   }
   
   

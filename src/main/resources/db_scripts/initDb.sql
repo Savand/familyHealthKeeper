@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS recipes;
+DROP TABLE IF EXISTS drugs;
 DROP TABLE IF EXISTS measurements;
 DROP TABLE IF EXISTS visits;
 DROP TABLE IF EXISTS sickness_history;
@@ -72,7 +72,7 @@ CREATE TABLE measurements
     FOREIGN KEY (person_id) REFERENCES persons (id)
 );
 
-CREATE TABLE recipes
+CREATE TABLE drugs
 (
     id              INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
     medicine        text NOT NULL,

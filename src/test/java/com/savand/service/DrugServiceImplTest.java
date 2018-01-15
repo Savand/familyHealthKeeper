@@ -6,24 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.savand.model.Recipe;
+import com.savand.model.Drug;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RecipeServiceImplTest {
+public class DrugServiceImplTest {
 
   @Autowired
-  private RecipeService service;
+  private DrugService service;
 
   @Test
   public void testGetRecipeById() {
-    Recipe recipeById = service.getRecipeById(100018);
+    Drug recipeById = service.getDrugById(100018);
     System.out.println(recipeById);
   }
 
   @Test
   public void testGetRecipeList() {
-    System.out.println(service.getRecipeList());
+    System.out.println(service.getDrugList());
   }
 
 }
