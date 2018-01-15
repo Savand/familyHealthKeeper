@@ -19,7 +19,7 @@
                 </a>
               </li>
               <li class="list-inline-item">
-                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.linkedin.com/in/andrew-savka-08b845102/">
+                <a class="btn btn-outline-light btn-social text-center rounded-circle" href="https://www.linkedin.com/in/andrew-savka-08b845102/" target="_blank">
                   <i class="fa fa-fw fa-linkedin"></i>
                 </a>
               </li>

@@ -6,7 +6,9 @@ import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Convert;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 
@@ -27,7 +29,8 @@ public @Data class Person extends BaseEntity {
   @Convert(converter = LocalDateAttributeConverter.class)
   private LocalDate birthDate;
   
-  @OneToMany(mappedBy = "person")
+  @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
+  @OrderBy("measureDateTime DESC")
   private List<Measurement> measurementList;
 
   @Override

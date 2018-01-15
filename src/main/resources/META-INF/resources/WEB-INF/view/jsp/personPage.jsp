@@ -16,9 +16,8 @@ Person measurements
 		<h3>
 			Measurements for <span class="label label-default">${ person.fullName }</span>
 		</h3>
-		<button type="button" class="btn btn-success pull-right"
-			data-toggle="modal" data-target="#myModal" style="margin: 5px">Add
-			measurement</button>
+		<button type="button" class="btn btn-success"
+			data-toggle="modal" data-target="#myModal" style="margin: 5px">Add</button>
 		<!-- Modal -->
 		<div id="myModal" class="modal fade" role="dialog">
 			<div class="modal-dialog">
@@ -84,7 +83,7 @@ Person measurements
 		</div>
 
 		<div class="table-responsive">
-			<table id="measurement-data-table" class="table table-hover">
+			<table id="measurement-data-table" class="display" cellspacing="0" width="100%">
 				<thead>
 					<tr>
 						<th>Date of measurement</th>
@@ -138,7 +137,10 @@ Person measurements
 	
    $(function(){
 
-	   $('#measurement-data-table').DataTable();
+	   $('#measurement-data-table').DataTable({
+		   "order": [[ 0, "desc" ]]
+	   });
+	   
 
 	   var now = new Date();
 	   $('#datetimepicker').val(now.toLocaleString());
