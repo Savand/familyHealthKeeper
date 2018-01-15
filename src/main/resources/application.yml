@@ -1,4 +1,6 @@
 ---
+server:
+  port: ${PORT:8080}
 logging:
   level:
     org.hibernate.SQL: TRACE
