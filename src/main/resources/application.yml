@@ -1,10 +1,6 @@
 ---
 logging:
-#  pattern:
-#    console: '%d{yyyy-MM-dd HH:mm:ss} - [%C{1}#%M: #%L] %msg%n'
   level:
-#    root: error
-#    org.springframework.web: debug
     org.hibernate.SQL: TRACE
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
     
@@ -17,18 +13,24 @@ spring:
   #db
   datasource:
     driver-class-name: org.postgresql.Driver
-    #local settigs
-#    url: jdbc:postgresql://localhost:5432/familyHealthKeeper
-#    username: postgres
-#    password: postgres
-    #heroku settigs
-    url: jdbc:postgresql://ec2-54-217-214-201.eu-west-1.compute.amazonaws.com:5432/d61d03sm4cefa1?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
-    username: ywoqizeprthbtj
-    password: 31d5bf9a154c37f4b5bd69844280c1fe5aa04f365c233f732c5bf2e550e311f6
+    url: jdbc:postgresql://localhost:5432/familyHealthKeeper
+    username: postgres
+    password: postgres
+
   data:
     rest:
       basePath: /api
+ 
   mvc:
    view:
     prefix: /WEB-INF/view/jsp/
     suffix: .jsp
+    
+---
+spring:
+  profiles: production
+  datasource:
+    url: jdbc:postgresql://ec2-54-217-214-201.eu-west-1.compute.amazonaws.com:5432/d61d03sm4cefa1?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory
+    username: ywoqizeprthbtj
+    password: 31d5bf9a154c37f4b5bd69844280c1fe5aa04f365c233f732c5bf2e550e311f6
+  
