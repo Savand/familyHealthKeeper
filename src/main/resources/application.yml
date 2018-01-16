@@ -1,8 +1,13 @@
 ---
 logging:
+  pattern:
+    console: '%d{yyyy-MM-dd HH:mm:ss} - [%C{1}#%M: #%L] %msg%n'
   level:
+#    root: error
+#    org.springframework.web: debug
     org.hibernate.SQL: TRACE
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+    
 spring:
   jpa:
     properties:
