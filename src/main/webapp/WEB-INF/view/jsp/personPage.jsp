@@ -118,7 +118,7 @@ Person measurements
 <script>
  var personId = ${person.id};
 </script>
-<script src="js/personList.js"></script>
+<script src="js/personPage.js"></script>
 
 
 

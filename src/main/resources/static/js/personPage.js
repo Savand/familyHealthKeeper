@@ -5,7 +5,7 @@ $(function() {
 		"order" : [ [ 1, "desc" ],[ 0, "desc" ]  ]
 	});
 
-	$('#datetimepicker').val(new Date().toLocaleString());
+	$('#datetimepicker').val(new Date().toLocaleString('en-US'));
 	$('#datetimepicker').datetimepicker();
 
 	$("#tempeatureSection").show();
