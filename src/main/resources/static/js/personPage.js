@@ -1,12 +1,16 @@
 
 $(function() {
-
+	$('[data-toggle="tooltip"]').tooltip();
 	$('#measurement-data-table').DataTable({
 		"order" : [ [ 1, "desc" ],[ 0, "desc" ]  ]
 	});
+	$('#sickness-data-table').DataTable({
+		"order" : [[ 0, "desc" ]  ]
+	});
 
-	$('#datetimepicker').val(new Date().toLocaleString('en-US'));
-	$('#datetimepicker').datetimepicker();
+	$('.dtp-start').val(new Date().toLocaleString('en-US'));
+
+	$('.appdatetimepicker').datetimepicker();
 
 	$("#tempeatureSection").show();
 	$("#pressureSection").hide();
@@ -31,6 +35,12 @@ $(function() {
 
 		}
 	});
+	
+	function getDateWithZeroZone(date) {
+		var date = new Date(date);
+		date.setHours(date.getHours() - date.getTimezoneOffset() / 60)
+		return date;
+	}
 
 	function readData() {
 		var measurementType = $('#measurementType').val();
@@ -41,15 +51,11 @@ $(function() {
 			indicatorValue = diaPressure + "/" + sysPressure;
 		}
 
-		function getDateWithZeroZone() {
-			var date = new Date($('#datetimepicker').val());
-			date.setHours(date.getHours() - date.getTimezoneOffset() / 60)
-			return date;
-		}
+
 
 		var measurementJson = {
-			person : $('#person').val(),
-			measureDateTime : getDateWithZeroZone(),
+			person : personUri,
+			measureDateTime : getDateWithZeroZone($('#datetimepicker-measurement').val()),
 			measurementType : $('#measurementType').val(),
 			indicatorValue : indicatorValue
 		};
