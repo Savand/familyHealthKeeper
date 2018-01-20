@@ -9,10 +9,10 @@ DELETE FROM hospitals;
 ALTER SEQUENCE global_seq RESTART WITH 100000;
 
 INSERT INTO persons(full_name, birthdate) VALUES 
-    ('Савка Богдан', '2011-07-20'),
-    ('Савка Марина', '1986-09-08'),
-    ('Савка Андрій', '1986-06-22'),
-    ('Савка Соломія', '2015-08-17');
+    ('John Doe', '2011-07-20'),
+    ('Adam Smith', '1986-09-08'),
+    ('Paul Doms', '1986-06-22'),
+    ('Tommas Mole', '2015-08-17');
     
 INSERT INTO hospitals (full_name, address, web_site_url) VALUES
     ('Центр святої Параскеви', 'Львів, вул. Заводьська, 7', 'https://medcenter.lviv.ua/ua'),
