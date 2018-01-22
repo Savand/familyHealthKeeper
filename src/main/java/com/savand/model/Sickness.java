@@ -24,8 +24,7 @@ public @Data class Sickness extends BaseEntity {
   @Convert(converter = LocalDateAttributeConverter.class)
   private LocalDate startDate;
 
-  @Column(name = "end_date", nullable = false)
-  @NotNull
+  @Column(name = "end_date")
   @Convert(converter = LocalDateAttributeConverter.class)
   private LocalDate endDate;
 

@@ -22,7 +22,7 @@ CREATE TABLE sickness_history
 (
     id              INTEGER PRIMARY KEY DEFAULT nextval('global_seq'),
     start_date      date NOT NULL,
-    end_date        date NOT NULL,
+    end_date        date,
     description     text NOT NULL,
     person_id       INTEGER,
     FOREIGN KEY (person_id) REFERENCES persons (id)

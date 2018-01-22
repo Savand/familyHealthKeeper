@@ -1,12 +1,25 @@
 
 $(function() {
-
+	
+	var from = getURLParameter('from');
+	
+	if(from === 'sickness'){
+		$('div#collapseOne').removeClass('show');
+		$('div#collapseTwo').addClass('show');
+	}
+	
+	
+	$('[data-toggle="tooltip"]').tooltip();
 	$('#measurement-data-table').DataTable({
 		"order" : [ [ 1, "desc" ],[ 0, "desc" ]  ]
 	});
+	$('#sickness-data-table').DataTable({
+		"order" : [[ 0, "desc" ]  ]
+	});
 
-	$('#datetimepicker').val(new Date().toLocaleString('en-US'));
-	$('#datetimepicker').datetimepicker();
+	$('.dtp-start').val(new Date().toLocaleString('en-US'));
+
+	$('.appdatetimepicker').datetimepicker();
 
 	$("#tempeatureSection").show();
 	$("#pressureSection").hide();
@@ -31,8 +44,14 @@ $(function() {
 
 		}
 	});
+	
+	function getDateWithZeroZone(date) {
+		var date = new Date(date);
+		date.setHours(date.getHours() - date.getTimezoneOffset() / 60)
+		return date;
+	}
 
-	function readData() {
+	function readMeasurementData() {
 		var measurementType = $('#measurementType').val();
 		var indicatorValue = $('#indicatorValue').val();
 		if (measurementType === 'BLOOD_PRESSURE_MMHG') {
@@ -41,20 +60,28 @@ $(function() {
 			indicatorValue = diaPressure + "/" + sysPressure;
 		}
 
-		function getDateWithZeroZone() {
-			var date = new Date($('#datetimepicker').val());
-			date.setHours(date.getHours() - date.getTimezoneOffset() / 60)
-			return date;
-		}
+
 
 		var measurementJson = {
-			person : $('#person').val(),
-			measureDateTime : getDateWithZeroZone(),
+			person : personUri,
+			measureDateTime : getDateWithZeroZone($('#datetimepicker-measurement').val()),
 			measurementType : $('#measurementType').val(),
 			indicatorValue : indicatorValue
 		};
 
 		return strMeasurement = JSON.stringify(measurementJson);
+	}
+	
+	function readSicknessData() {
+
+		var sicknessJson = {
+			person : personUri,
+			startDate : getDateWithZeroZone($('#datetimepicker-sickness-start').val()),
+			endDate : getDateWithZeroZone($('#datetimepicker-sickness-end').val()),
+			description : $('#sickness-description').val()
+		};
+
+		return strMeasurement = JSON.stringify(sicknessJson);
 	}
 
 	$('#addMeasurementForm').submit(function(e) {
@@ -64,9 +91,26 @@ $(function() {
 			contentType : "application/json",
 			dataType : 'json',
 			type : 'POST',
-			data : readData(),
+			data : readMeasurementData(),
 			success : function(data) {
 				window.location.href = 'personPage?id=' + personId;
+			},
+			error : function(data) {
+				alert('Oops, smth went wrong');
+			}
+		});
+	});
+	
+	$('#addSicknessForm').submit(function(e) {
+		e.preventDefault();
+		$.ajax({
+			url : 'api/sicknesses',
+			contentType : "application/json",
+			dataType : 'json',
+			type : 'POST',
+			data : readSicknessData(),
+			success : function(data) {
+				window.location.href = 'personPage?id=' + personId + '&from=sickness';
 			},
 			error : function(data) {
 				alert('Oops, smth went wrong');
@@ -89,4 +133,31 @@ function deleteMeasurement(id) {
 			alert('Oops, smth went wrong');
 		}
 	});
+}
+
+function deleteSickness(id) {
+	$.ajax({
+		url : 'api/sicknesses/' + id,
+		contentType : "application/json",
+		dataType : 'json',
+		type : 'DELETE',
+		data : id,
+		success : function(data) {
+			window.location.href = 'personPage?id=' + personId + '&from=sickness';
+		},
+		error : function(data) {
+			alert('Oops, smth went wrong');
+		}
+	});
+}
+
+function getURLParameter(sParam){
+    var sPageURL = window.location.search.substring(1);
+    var sURLVariables = sPageURL.split('&');
+    for (var i = 0; i < sURLVariables.length; i++){
+        var sParameterName = sURLVariables[i].split('=');
+        if (sParameterName[0] == sParam){
+            return sParameterName[1];
+        }
+    }
 }

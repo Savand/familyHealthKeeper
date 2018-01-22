@@ -32,6 +32,10 @@ public @Data class Person extends BaseEntity {
   @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
   @OrderBy("measureDateTime DESC")
   private List<Measurement> measurementList;
+  
+  @OneToMany(mappedBy = "person", fetch = FetchType.LAZY)
+  @OrderBy("startDate DESC")
+  private List<Sickness> sicknessList;
 
   @Override
   public String toString() {
