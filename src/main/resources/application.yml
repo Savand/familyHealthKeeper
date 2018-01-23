@@ -3,7 +3,7 @@ logging:
   level:
     org.hibernate.SQL: TRACE
     org.hibernate.type.descriptor.sql.BasicBinder: TRACE
-    
+    org.springframework.web: debug
 spring:
   jpa:
     properties:
