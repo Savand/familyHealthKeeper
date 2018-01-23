@@ -143,14 +143,14 @@
 									<div class="form-group row">
 										<label for="datetimepicker-sickness-start" class="col-sm-2 col-form-label">Start date</label>
 										<div class="col-sm-10">
-											<input id="datetimepicker-sickness-start" class="appdatetimepicker dtp-start" type='text' class="form-control"
+											<input id="datetimepicker-sickness-start" class="appdatepicker" type='text' class="form-control"
 												required />
 										</div>
 									</div>
 									<div class="form-group row">
 										<label for="datetimepicker-sickness-end" class="col-sm-2 col-form-label">End date</label>
 										<div class="col-sm-10">
-											<input id="datetimepicker-sickness-end" class="appdatetimepicker" type='text' class="form-control" />
+											<input id="datetimepicker-sickness-end" class="appdatepicker" type='text' class="form-control" />
 										</div>
 									</div>
 									<div class="form-group row">

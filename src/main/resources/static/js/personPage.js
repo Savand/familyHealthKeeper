@@ -20,6 +20,10 @@ $(function() {
 	$('.dtp-start').val(new Date().toLocaleString('en-US'));
 
 	$('.appdatetimepicker').datetimepicker();
+    $('.appdatepicker').datetimepicker({
+        timepicker: false,
+        format: 'd/m/Y',
+    });
 
 	$("#tempeatureSection").show();
 	$("#pressureSection").hide();
