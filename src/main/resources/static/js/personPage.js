@@ -19,10 +19,11 @@ $(function() {
 
 	$('.dtp-start').val(new Date().toLocaleString('en-US'));
 
-	$('.appdatetimepicker').datetimepicker();
+    $('.dp-start').val(new Date().toLocaleDateString('en-US'));
+    $('.appdatetimepicker').datetimepicker();
     $('.appdatepicker').datetimepicker({
         timepicker: false,
-        format: 'd/m/Y',
+        format: 'm/d/Y',
     });
 
 	$("#tempeatureSection").show();
