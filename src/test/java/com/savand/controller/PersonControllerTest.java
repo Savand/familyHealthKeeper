@@ -13,7 +13,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
@@ -26,17 +25,10 @@ public class PersonControllerTest {
     @MockBean
     private PersonService personService;
 
-//    @InjectMocks
-//    private PersonController personController;
 
     @Autowired
     private MockMvc mockMvc;
 
-//    @Before
-//    public void setup() {
-//        MockitoAnnotations.initMocks(this);
-//        mockMvc = MockMvcBuilders.standaloneSetup(personController).build();
-//    }
 
     @Test
     public void testGetPersonList() throws Exception {
@@ -44,7 +36,7 @@ public class PersonControllerTest {
         persons.add(new Person());
         persons.add(new Person());
 
-        when(personService.getPersonListOrderByIdAsc()).thenReturn((List) persons);
+        when(personService.getPersonListOrderByIdAsc()).thenReturn(persons);
         mockMvc.perform(
                 get("/persons"))
                 .andExpect(status().isOk())
@@ -54,20 +46,18 @@ public class PersonControllerTest {
 
     }
 
-    //Todo: finish the test (error message = Required Integer parameter 'id' is not present)
     @Test
     public void testGetPersonPage() throws Exception {
         Person person = new Person();
+        Integer value = 100007;
 
-        when(personService.getPersonById(10007)).thenReturn(person);
-        Integer value = 10007;
+        when(personService.getPersonById(value)).thenReturn(person);
         mockMvc.perform(
-                get("/personPage").requestAttr("id", value))
+                get("/personPage").param("id", String.valueOf(value)))
                 .andExpect(status().isOk())
-                .andExpect(model().attribute("person", is(person)))
+                .andExpect(model().attribute("person", person))
                 .andExpect(view().name("personPage")
-                )
-                ;
+                );
 
     }
 }
