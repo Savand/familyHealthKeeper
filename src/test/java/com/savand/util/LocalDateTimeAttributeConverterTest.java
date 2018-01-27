@@ -10,16 +10,25 @@ import static org.junit.Assert.assertEquals;
 public class LocalDateTimeAttributeConverterTest {
 
     @Test
-    public void testConvertToDatabaseColumn() {
+    public void testConvertToDatabaseColumn_ReturnSQLDateTimeValueOfLocalDateTime() {
         LocalDateTime localDateTime = LocalDateTime.now();
-        assertEquals(null,  new LocalDateTimeAttributeConverter().convertToDatabaseColumn(null));
-        assertEquals(Timestamp.valueOf(localDateTime),  new LocalDateTimeAttributeConverter().convertToDatabaseColumn(localDateTime));
+        assertEquals(Timestamp.valueOf(localDateTime), new LocalDateTimeAttributeConverter().convertToDatabaseColumn(localDateTime));
     }
 
     @Test
-    public void testConvertToEntityAttribute() {
+    public void testConvertToDatabaseColumn_ReturnNullWhenArgIsNull() {
+        assertEquals(null, new LocalDateTimeAttributeConverter().convertToDatabaseColumn(null));
+    }
+
+
+    @Test
+    public void testConvertToEntityAttribute_ReturnLocalDateTimeValueOfSQLDateTime() {
         Timestamp timestamp = new Timestamp(10000);
-        assertEquals(null, new LocalDateTimeAttributeConverter().convertToEntityAttribute(null));
         assertEquals(timestamp.toLocalDateTime(), new LocalDateTimeAttributeConverter().convertToEntityAttribute(timestamp));
+    }
+
+    @Test
+    public void testConvertToEntityAttribute_ReturnNullWhenArgIsNull() {
+        assertEquals(null, new LocalDateTimeAttributeConverter().convertToEntityAttribute(null));
     }
 }
