@@ -113,7 +113,9 @@ $(function() {
 			contentType : "application/json",
 			dataType : 'json',
 			type : 'POST',
+
 			data : readSicknessData(),
+
 			success : function(data) {
 				window.location.href = 'personPage?id=' + personId + '&from=sickness';
 			},
@@ -123,6 +125,61 @@ $(function() {
 		});
 	});
 });
+
+function getDateWithZeroZone(date) {
+    var date = new Date(date);
+    date.setHours(date.getHours() - date.getTimezoneOffset() / 60)
+    return date;
+}
+function updateSicknessData() {
+
+    var sicknessJson = {
+        person : personUri,
+        startDate : getDateWithZeroZone($('#datetimepicker-sickness-start-update').val()),
+        endDate : getDateWithZeroZone($('#datetimepicker-sickness-end-update').val()),
+        description : $('#sickness-description-update').val()
+    };
+
+    return strUpdate = JSON.stringify(sicknessJson);
+}
+
+function updateSickness(id){
+
+    $.ajax({
+
+        url : 'api/sicknesses/' + id,
+        contentType : "application/json",
+        dataType : 'json',
+        type : 'get',
+
+        success : function(sickness) {
+            $('#datetimepicker-sickness-start-update').val(sickness.startDate);
+            $('#datetimepicker-sickness-end-update').val(sickness.endDate);
+            $('#sickness-description-update').val(sickness.description);
+
+            $('#updateSicknessForm').submit(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: 'api/sicknesses/' + id ,
+                    contentType: "application/json",
+                    dataType: 'json',
+                    type: 'put',
+                    data: updateSicknessData(),
+
+                    success : function(data) {
+                        window.location.href = 'personPage?id=' + personId + '&from=sickness';
+                    },
+                    error : function(data) {
+                        alert('Oops, smth went wrong');
+                    }
+                });
+            });
+        },
+        error : function(data) {
+            alert('Oops, smth went wrong');
+        }
+    });
+}
 
 function deleteMeasurement(id) {
 	$.ajax({

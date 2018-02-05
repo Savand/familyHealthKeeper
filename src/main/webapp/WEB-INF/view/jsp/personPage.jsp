@@ -201,9 +201,60 @@
 									<td><button
 											onclick="console.log('currently not available')"
 											type="button" class="btn btn-info"  data-toggle="tooltip" data-placement="top" title="Currently not available. In design progress">Visits</button></td>
-									<td><button
+									<td>
+
+										<button
 											onclick="updateSickness(${sickness.id})"
-											type="button" class="btn btn-warning">Update</button></td>
+
+											type="button" class="btn btn-warning"
+											data-toggle="modal"
+											data-target="#updateSicknessModal"
+										>Update</button>
+	<%--Update Sickness Modal--%>
+										<div id="updateSicknessModal" class="modal fade"  role="dialog">
+											<div class="modal-dialog modal-lg" >
+												<%--Modal content--%>
+												<div class="modal-content">
+													<div class="modal-header">
+														<h4 class="modal-title">Update Sickness</h4>
+													</div>
+													<div class="modal-body">
+														<!-- We display the details entered by the user here -->
+														<form id="updateSicknessForm">
+															<div class="form-group row">
+																<label for="datetimepicker-sickness-start" class="col-sm-2 col-form-label">Start date</label>
+																<div class="col-sm-10">
+																	<input id="datetimepicker-sickness-start-update" class="appdatepicker" type='text' class="form-control"
+																		   required
+																	/>
+																</div>
+															</div>
+															<div class="form-group row">
+																<label for="datetimepicker-sickness-end" class="col-sm-2 col-form-label">End date</label>
+																<div class="col-sm-10">
+																	<input id="datetimepicker-sickness-end-update" class="appdatepicker" type='text' class="form-control"
+																	/>
+																</div>
+															</div>
+															<div class="form-group row">
+																<label for="sickness-description" class="col-sm-2 col-form-label">Sickness description</label>
+																<div class="col-sm-10">
+																	<input type="text" id="sickness-description-update" class="form-control" required
+																	>
+																</div>
+															</div>
+
+															<div class="modal-footer">
+																<button type="submit" class="btn btn-primary" id="update">Update</button>
+																<button type="button" class="btn btn-default"
+																		data-dismiss="modal">Close</button>
+															</div>
+														</form>
+													</div>
+												</div>
+											</div>
+										</div>
+									</td>
 
 									<td><button
 											onclick="deleteSickness(${sickness.id})"
