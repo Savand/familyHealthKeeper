@@ -49,6 +49,26 @@ function updatePerson(id) {
     });
 }
 
+function deletePerson(id){
+    var confirmation = confirm("Are you sure you want to delete?");
+    if (!confirmation) {
+        return;
+    }
+    $.ajax({
+        url: 'api/persons/' + id,
+        contentType: "application/json",
+        dataType: 'json',
+        type: 'delete',
+        data: id,
+        success: function (data) {
+            window.location.href = 'persons?';
+        },
+        error: function (data) {
+            alert('Oops, smth went wrong');
+        }
+    });
+}
+
 function readPersonData() {
     var personJson = {
         fullName: $('#person-name-add').val(),

@@ -134,8 +134,10 @@
 
             </td>
             <td>
-                    <%--Todo : add functionality--%>
-                <button type="button" class="btn btn-danger">
+
+                <button
+                        onclick="deletePerson(${person.id})"
+                        type="button" class="btn btn-danger">
                     Delete
                 </button>
 
