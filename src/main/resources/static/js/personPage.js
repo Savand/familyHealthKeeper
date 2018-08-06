@@ -23,7 +23,7 @@ $(function() {
     $('.appdatetimepicker').datetimepicker();
     $('.appdatepicker').datetimepicker({
         timepicker: false,
-        format: 'm/d/Y',
+        format: 'Y-m-d',
     });
 
 	$("#tempeatureSection").show();
